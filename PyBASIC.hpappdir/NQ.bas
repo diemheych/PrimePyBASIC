@@ -1,0 +1,21 @@
+  20  R=8
+  30  DIM A(R)
+  40  IF X=R THEN 180
+  50  X=X+1
+  60  A(X)=R
+  70  S=S+1
+  80  Y=X
+  90  Y=Y-1
+ 100  IF Y=0 THEN 40
+ 110  T=A(X)-A(Y)
+ 120  IF T=0 THEN 140
+ 130  IF X-Y<>ABS(T) THEN 90
+ 140  A(X)=A(X)-1
+ 150  IF A(X)<>0 THEN 70
+ 160  X=X-1
+ 170  IF X<>0 THEN 140
+ 180  PRINT S
+ 190  FOR I = 1 TO 8
+ 200  PRINT A(I);" ";
+ 210  NEXT I
+ 220  PRINT
