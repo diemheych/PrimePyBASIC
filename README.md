@@ -20,4 +20,4 @@ Please see the PyBasic repository for details of the BASIC functionality impleme
 
 I have created a separate repository to potentially add Prime specific functionality whereas PyBasic intends to remain non-hardware specific.
 
-Shout out to richpl for his excellent PyBasic implementation which ported fairly easily to the HP Prime's older and incomplete MicroPython implementation.
+Shout out to @richpl for his excellent PyBasic implementation which ported fairly easily to the HP Prime's older and incomplete MicroPython implementation.
