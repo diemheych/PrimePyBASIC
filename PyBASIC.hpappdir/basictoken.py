@@ -122,6 +122,9 @@ class BASICToken:
         WHILE           = 89  # WHILE keyword
         WEND            = 90  # WEND keyword
         RENUMBER        = 91  # RENUMBER command
+        PSET            = 92  # PSET command
+        CLS             = 93  # CLS command
+        COLOUR          = 94  # COLOUR command
 
         # Displayable names for each token category
         catnames = ['EOF', 'LET', 'LIST', 'PRINT', 'RUN',
@@ -141,7 +144,7 @@ class BASICToken:
         'RNDINT', 'OPEN', 'HASH', 'CLOSE', 'FSEEK', 'APPEND',
         'OUTPUT', 'RESTORE', 'RNDINT', 'TAB', 'SEMICOLON',
         'LEFT', 'RIGHT',
-        'WHILE', 'WEND', 'RENUMBER']
+        'WHILE', 'WEND', 'RENUMBER', 'PSET', 'CLS', 'COLOUR']
 
         smalltokens = {'=': ASSIGNOP, '(': LEFTPAREN, ')': RIGHTPAREN,
                        '+': PLUS, '-': MINUS, '*': TIMES, '/': DIVIDE,
@@ -179,7 +182,7 @@ class BASICToken:
                     'APPEND': APPEND, 'OUTPUT':OUTPUT,
                     'RESTORE': RESTORE, 'TAB': TAB,
                     'LEFT$': LEFT, 'RIGHT$': RIGHT,'RENUMBER': RENUMBER,
-                    'WHILE': WHILE, 'WEND': WEND}
+                    'WHILE': WHILE, 'WEND': WEND, 'PSET': PSET, 'CLS': CLS, 'COLOUR': COLOUR}
 
 
         # Functions

@@ -20,6 +20,7 @@ from flowsignal import FlowSignal
 import math
 import urandom as random
 import hpprime
+import graphic
 
 
 """Implements a BASIC array, which may have up
@@ -129,6 +130,8 @@ class BASICParser:
 
         #file handle list
         self.__file_handles = {}
+        # Graphics Colour
+        self.__colour = 0x000000
 
     def parse(self, tokenlist, line_number):
         """Must be initialised with the list of
@@ -258,6 +261,18 @@ class BASICParser:
 
         elif self.__token.category == Token.PRINT:
             self.__printstmt()
+            return None
+
+        elif self.__token.category == Token.CLS:
+            self.__clsstmt()
+            return None
+
+        elif self.__token.category == Token.COLOUR:
+            self.__colourstmt()
+            return None
+
+        elif self.__token.category == Token.PSET:
+            self.__psetstmt()
             return None
 
         elif self.__token.category == Token.LET:
@@ -408,6 +423,52 @@ class BASICParser:
         else:
             print()
         self.__prnt_column = 0
+
+    def __colourstmt(self):
+        self.__advance()  # Advance past the COLOUR token
+
+        self.__consume(Token.LEFTPAREN)
+
+        self.__expr()
+        red_value = self.__operand_stack.pop() % 256
+
+        self.__consume(Token.COMMA)
+
+        self.__expr()
+        green_value = self.__operand_stack.pop() % 256
+
+        self.__consume(Token.COMMA)
+
+        self.__expr()
+        blue_value = self.__operand_stack.pop() % 256
+
+        self.__consume(Token.RIGHTPAREN)
+        self.__colour = red_value * 65536 + green_value * 256 + blue_value
+        return None
+
+    def __clsstmt(self):
+        self.__advance()  # Advance past the CLS token
+        graphic.clear_screen(0xffffff)
+        hpprime.eval("print")
+        return None
+
+    def __psetstmt(self):
+        self.__advance()  # Advance past the PSET token
+
+        self.__consume(Token.LEFTPAREN)
+
+        self.__expr()
+        xvalue = self.__operand_stack.pop() % 320
+
+        self.__consume(Token.COMMA)
+
+        self.__expr()
+        yvalue = self.__operand_stack.pop() % 240
+
+        self.__consume(Token.RIGHTPAREN)
+        hpprime.pixon(0, xvalue, yvalue, self.__colour)
+        return None
+
 
     def __letstmt(self):
         """Parses a LET statement,
