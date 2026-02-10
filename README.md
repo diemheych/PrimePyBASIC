@@ -28,7 +28,9 @@ Graphic co-ordinates are from top left with 0-319 for X and 0-239 for Y.
 
 Note, when a program ends and the text prompt is printed, the graphics display is lost so use an infinite loop at the end of the program to keep graphics displayed until the program is terminated.
 
-See hat.bas for a sample graphics program.
+See hat.bas for a sample graphics program (output shown below).
+
+![Hat](Images/hat.png)
 
 # References
 PrimePyBASIC is a port of PyBasic (see https://github.com/richpl/PyBasic) to the HP Prime with changes to support the Prime's MicroPython environment. It is also packaged as an HP Prime application for easy installation on a virtual or physical Prime calculator.
