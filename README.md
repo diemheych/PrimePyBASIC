@@ -13,7 +13,23 @@ The physical Prime MicroPython environment is case sensitive for filenames. When
 
 For the simple filename, PyBASIC converts the filename to uppercase and appends the ".bas" extension in lowercase. For the full filename (including extension) the case used within the double quotes is preserved.
 
-This can cause unexpected results (inability to load a file) on a physical Prime vs a virtual Prime calculator. Use the full filename format if in doubt. I may change this functionality in a future update to minimise these differences. 
+This can cause unexpected results (inability to load a file) on a physical Prime vs a virtual Prime calculator. Use the full filename format if in doubt. I may change this functionality in a future update to minimise these differences.
+
+# Additional Commands
+The following additional BASIC commands and functions have been implemented to support HP Prime specific functionality.
+
+| Command         | Description |
+|-------------|-------------|
+| CLS             | Clear screen                           |
+| COLOUR( r, g, b)| Set graphic RGB colour (0-255 for each)|
+| PSET(x, y)      | Set graphic pixel at (x,y) to current colour               |
+
+Graphic co-ordinates are from top left with 0-319 for X and 0-239 for Y.
+
+Note, when a program ends and the text prompt is printed, the graphics display is lost so use an infinite loop at the end of the program to keep graphics displayed until the program is terminated.
+
+See hat.bas for a sample graphics program.
+
 # References
 PrimePyBASIC is a port of PyBasic (see https://github.com/richpl/PyBasic) to the HP Prime with changes to support the Prime's MicroPython environment. It is also packaged as an HP Prime application for easy installation on a virtual or physical Prime calculator.
 Please see the PyBasic repository for details of the BASIC functionality implemented and examples included.
